@@ -1,4 +1,6 @@
 .vscode
 venv/
 .env
-/backend/visual-313719-64d783890829.json
+/backend/*.json
+__pycache__
+uploads/**
