@@ -1,14 +1,12 @@
 # import required libraries
-from vidgear.gears import VideoGear
 import cv2
-
+from vidgear.gears import VideoGear
 
 # enable enablePiCamera boolean flag to access PiGear API backend
 stream = VideoGear(enablePiCamera=True).start()
 
 # loop over
 while True:
-
     # read frames from stream
     frame = stream.read()
 
