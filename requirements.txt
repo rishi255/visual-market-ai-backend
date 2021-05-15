@@ -1,2 +1,6 @@
 Flask
 gunicorn
+sqlalchemy 
+sqlalchemy-cockroachdb
+psycopg2
+python-dotenv
