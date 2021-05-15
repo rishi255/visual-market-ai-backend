@@ -4,3 +4,6 @@ sqlalchemy
 sqlalchemy-cockroachdb
 psycopg2-binary
 python-dotenv
+google-cloud-vision
+google-cloud-speech
+google-auth
