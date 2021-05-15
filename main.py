@@ -84,7 +84,7 @@ def index():
 def login():
     username = request.args.get("username")
     password = request.args.get("password")
-    account = run(lambda sess: sess.query(Account).filter_by(name=username)).one()
+    account = run(lambda sess: sess.query(Account).filter_by(username=username)).one()
     if account.password == password:
         # Success
         return "Success", 200
@@ -100,11 +100,11 @@ def register():
     username = request.args.get("username")
     password = request.args.get("password")
     account = run(
-        lambda sess: sess.query(Account).filter(
-            exists().where(Account.username == username)
-        )
+        lambda sess: sess.query(Account)
+        .filter(exists().where(Account.username == username))
+        .all()
     )
-    if account:
+    if len(account) > 0:
         # account with this username already exists
         return "Account already exists!", 409
     else:
