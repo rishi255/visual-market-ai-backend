@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 
 import io, os
-=======
-import os
-
 from dotenv import load_dotenv
->>>>>>> 2ab7133f66b1218ac0aaf9cc7cc863fa7efcc348
 from google.cloud import speech
 from google.oauth2 import service_account
 
@@ -127,13 +122,3 @@ if __name__ == "__main__":
     audio_bytes = open(file=audio_path, mode='rb').read()
     # print(audio_bytes)
     transcribe_streaming(stream_file=audio_path)
-=======
-
-if __name__ == "__main__":
-    # 2:06 minute sample file too big
-    print("-" * 100)
-    audio_path = "/mnt/d/Users/qcaij/OneDrive - University of Florida/DESKTOP-1S7D2TD/qcaij/Desktop/VisualMarketAI-/backend/data/customer_support_sample_1.wav"
-    audio_bytes = open(file=audio_path, mode="rb").read()
-    print(audio_bytes)
-    response = get_transcript(content=audio_bytes)
->>>>>>> 2ab7133f66b1218ac0aaf9cc7cc863fa7efcc348
