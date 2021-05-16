@@ -1,15 +1,13 @@
+
 import os
 from google.cloud import vision
 from google.oauth2 import service_account
 from dotenv import load_dotenv
 
 load_dotenv()
-KEYDIR_PATH = os.getenv("KEYDIR_PATH")
-with open(KEYDIR_PATH, "w") as f:
-    f.write(os.getenv("SERVICE_JSON"))
+KEYDIR_PATH = os.getenv(key='KEYDIR_PATH')
 credentials = service_account.Credentials.from_service_account_file(KEYDIR_PATH)
 client = vision.ImageAnnotatorClient(credentials=credentials)
-
 
 def detect_objects(image_path: str):
     """
@@ -65,7 +63,7 @@ def detect_logos(image_path: str):
 
 if __name__ == "__main__":
     print("-" * 100)
-    image_path = "backend/data/fruits.png"
+    image_path = "./data/fruits.png"
     objects = detect_objects(image_path=image_path)
 
     for object_ in objects:
@@ -75,7 +73,7 @@ if __name__ == "__main__":
             print(f" - ({vertex.x}, {vertex.y})")
 
     print("-" * 100)
-    image_path = "backend/data/logo-collage.png"
+    image_path = "./data/quarantine-processed-foods.png"
     logos = detect_logos(image_path=image_path)
     for logo in logos:
         print(logo.description)
