@@ -7,10 +7,15 @@ KEYDIR_PATH = os.getenv(key='KEYDIR_PATH')
 
 
 def get_transcript(audio_path: str):
-    """[summary]
+    """
+    Gets transcript of audio file.
 
     Args:
-        audio_path (str): [description]
+        content (bytes): Content of audio file as bytes.
+        audio_path (str): Path or uri to audio file.
+
+    Returns:
+        object: Processed audio file for speech-to-text.
     """
     # use the audio file as the audio source
     r = sr.Recognizer()
@@ -20,7 +25,7 @@ def get_transcript(audio_path: str):
     # recognize speech using Sphinx
     transcript = str()
     try:
-        transcript = r.recognize_sphinx(audio)
+        transcript = r.recognize_sphinx(audio_data=audio)
         print('Sphinx thinks you said:\n' + transcript)
     except sr.UnknownValueError:
         print('Sphinx could not understand audio')
@@ -42,6 +47,6 @@ def get_transcript(audio_path: str):
 #     print(f'Could not request results from Google Cloud Speech service; {e}')
 
 if __name__ == '__main__':
-    audio_path = './data/customer_support_sample_1.wav'
+    audio_path = './data/customer_support_sample_2.wav'
     transcript = get_transcript(audio_path=audio_path)
 
