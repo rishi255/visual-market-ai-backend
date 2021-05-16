@@ -10,9 +10,9 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
-COPY install_scripts.sh .
+# COPY install_scripts.sh .
 # Install production dependencies.
-RUN ./install_scripts.sh
+RUN ./install-packages.sh
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
