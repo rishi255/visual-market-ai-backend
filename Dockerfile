@@ -10,8 +10,10 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
+RUN chmod +x ./install-packages.sh
+# COPY install_scripts.sh .
 # Install production dependencies.
-RUN pip install -r requirements.txt
+RUN ./install-packages.sh
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
