@@ -17,7 +17,7 @@ apt-get update
 # apt-get -y upgrade
 
 # Install a new package, without unnecessary recommended packages:
-apt-get -y install --no-install-recommends <requirements-ubuntu.txt
+apt-get -y install --no-install-recommends libasound2-dev libpulse-dev pocketsphinx pulseaudio swig gcc
 pip install -r requirements.txt
 
 # Delete cached files we don't need anymore (note that if you're
