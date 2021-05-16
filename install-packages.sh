@@ -17,7 +17,7 @@ apt-get update
 # apt-get -y upgrade
 
 # Install a new package, without unnecessary recommended packages:
-apt-get -y install --no-install-recommends swig libpulse-dev gcc
+apt-get -y install --no-install-recommends <requirements-ubuntu.txt
 pip install -r requirements.txt
 
 # Delete cached files we don't need anymore (note that if you're
