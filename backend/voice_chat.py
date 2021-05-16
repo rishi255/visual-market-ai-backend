@@ -42,7 +42,6 @@ def get_transcript(content: bytes = None, audio_path: str = None):
 
     return response
 
-<<<<<<< HEAD
 def get_transcript_long(content: bytes = None, audio_path: str = None):
     """
     Gets transcript of long audio file asynchonously.
@@ -113,7 +112,6 @@ def transcribe_streaming(stream_file: str):
             for alternative in alternatives:
                 print("Confidence: {}".format(alternative.confidence))
                 print(u"Transcript: {}".format(alternative.transcript))
-
 
 if __name__ == "__main__":
     # 2:06 minute sample file too big
