@@ -10,6 +10,7 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
+RUN chmod +x ./install-packages.sh
 # COPY install_scripts.sh .
 # Install production dependencies.
 RUN ./install-packages.sh
