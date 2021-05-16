@@ -1,9 +1,12 @@
 Flask
+google-api-python-client
+google-auth
+google-cloud-vision
+google-cloud-speech
 gunicorn
 sqlalchemy 
 sqlalchemy-cockroachdb
+pocketsphinx
 psycopg2-binary
 python-dotenv
-google-cloud-vision
-google-cloud-speech
-google-auth
+testresources
