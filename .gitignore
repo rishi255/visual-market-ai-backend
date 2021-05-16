@@ -1,6 +1,6 @@
 .vscode
 venv/
 .env
-/backend/*.json
+*.json
 __pycache__
 uploads/**
