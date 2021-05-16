@@ -67,7 +67,8 @@ class UserHistory(Base):
     """
 
     __tablename__ = "user_history"
-    username = Column(String, primary_key=True)
+    id = Column(Integer, primary_key=True)
+    username = Column(String)
     store_id = Column(String)  # store ID
     time = Column(DateTime)  # time of check in
 
@@ -123,8 +124,10 @@ def login_owner():
     password = request.args.get("password")
     account = run(
         lambda sess: sess.query(OwnerAccount).filter_by(username=username)
-    ).one()
-    if account.password == password:
+    ).all()
+
+    account = account[0] if len(account) > 0 else None
+    if account and account.password == password:
         # Success
         return "Success", 200
     else:
@@ -164,7 +167,18 @@ def create_store():
 @app.route("/user_history")
 def user_history():
     username = request.args.get("username")
-    pass
+    history = run(
+        lambda sess: sess.query(UserHistory)
+        .filter_by(username=username)
+        .order_by(UserHistory.time.desc())
+        .all()
+    )
+
+    x = [
+        {"username": i.username, "store_id": i.store_id, "time": i.time}
+        for i in history
+    ]
+    return {"history": x}, 200
 
 
 @app.route("/login_user")
@@ -173,9 +187,10 @@ def login_user():
     password = request.args.get("password")
     account = run(
         lambda sess: sess.query(UserAccount).filter_by(username=username)
-    ).one()
-    if account.password == password:
-        # Success
+    ).all()
+
+    account = account[0] if len(account) > 0 else None
+    if account and account.password == password:
         return "Success", 200
     else:
         return "Failure", 401
